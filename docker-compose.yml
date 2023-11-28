@@ -1,0 +1,26 @@
+version: "2"
+services:
+  bookstore-ui:
+    image:
+      419248/bookstore-ui:${BOOKSTORE_UI_SHA}
+    ports:
+      - "9090:80"
+  bookstore:
+    image:
+      419248/bookstore:${BOOKSTORE_API_SHA}
+    ports:
+      - "8080:8080"
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: icebreakers
+      POSTGRES_PASSWORD: anonymous
+      POSTGRES_DB: bookdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
