@@ -12,6 +12,8 @@ read BOOKSTORE_API_SHA
 # shellcheck disable=SC1073
 echo "Provided bookstore-ui sha is $BOOKSTORE_UI_SHA and bookstore-api sha is $BOOKSTORE_API_SHA"
 
+export BOOKSTORE_UI_SHA=$BOOKSTORE_UI_SHA
+export BOOKSTORE_API_SHA=$BOOKSTORE_API_SHA
 echo "Removing Running Containers"
 docker stop $(docker ps -aq)
 
